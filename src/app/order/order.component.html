@@ -1,0 +1,95 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Danh sách đơn đặt hàng</li>
+        </ol>
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Danh sách đơn đặt hàng</h1>
+        </div>
+    </div>
+    <!--/.row-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table style="text-align: center;" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;" scope="col">ID</th>
+                                <th style="text-align: center;" scope="col">Tên khách hàng</th>
+                                <th style="text-align: center;" scope="col">Địa chỉ</th>
+                                <th style="text-align: center;" scope="col">Email</th>
+                                <th style="text-align: center;" scope="col">Số điện thoại</th>
+                                <th style="text-align: center;" scope="col">Tổng tiền</th>
+                                <th style="text-align: center;" scope="col">Trạng thái</th>
+                                <th style="text-align: center;" scope="col">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orders">
+                                <td scope="row">{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.address}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{ item.total | currency:" " }} VND</td>
+                                <td *ngIf="item.state==0">
+                                    <p sty><span style="background: red;" class="badge badge-danger">Chưa giao</span></p>
+                                </td>
+                                <td *ngIf="item.state==1"><span style="background: rgb(6, 167, 20);" class="badge badge-success">Đã giao</span></td>
+                                <td class="form-group">
+                                    <button data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-right: 10px;background: #e30c0cd9;border: none;" (click)="showOrder(item.id)" type="button" class="btn btn-primary">
+                                        Xem chi tiet
+                                    </button>
+                                    <button (click)="changeStatus(item.id)" type="button" class="btn btn-primary">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <table style="text-align: center;" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;" scope="col">ID</th>
+                            <th style="text-align: center;" scope="col">Tên sản phẩm</th>
+                            <th style="text-align: center;" scope="col">Hinh ảnh</th>
+                            <th style="text-align: center;" scope="col">Giá</th>
+                            <th style="text-align: center;" scope="col">Số lượng</th>
+                            <th style="text-align: center;" scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listOrderShow">
+                            <td scope="row">{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td><img width="80" height="120" src="../../assets/img/{{item.image}}" alt=" "></td>
+                            <td>{{ item.price | currency:" " }} VND</td>
+                            <td>{{ item.quantity}}</td>
+                            <td>{{item.price * item.quantity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/.main-->
+
+<script src="./assets/js/jquery-1.11.1.min.js "></script>
+<script src="./assets/js/bootstrap.min.js "></script>
+<script src="./assets/js/bootstrap-table.js "></script>
