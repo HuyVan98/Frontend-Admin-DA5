@@ -14,8 +14,16 @@ export class OrderComponent implements OnInit {
   ) { }
   orders: any = [];
   listOrderShow: any = [];
+  localStoreUser = true;
   ngOnInit(): void {
-    this.getall();
+    var userlogin = localStorage.getItem('user')
+    if (userlogin) {
+      this.getall();
+    } else {
+      this.localStoreUser = false
+      window.location.href = "/dang-nhap";
+      
+    }
   }
   getall() {
     this.orderService.GetAll().subscribe((data: any) => {

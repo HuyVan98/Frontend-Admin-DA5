@@ -27,14 +27,20 @@ export class ProductComponent implements OnInit {
   featured: any;
   PhotoFilePath: any;
   categoryList: any;
-
+  localStoreUser = true;
   ngOnInit(): void {
-    this.getall()
-    this.sanphamService.getAllLoaisp().subscribe((data: any) => {
-      this.categoryList = data.data;
-      this.cat_id=this.cat_id;
-    });
+    var userlogin = localStorage.getItem('user')
+    if (userlogin) {
+      this.getall()
+      this.sanphamService.getAllLoaisp().subscribe((data: any) => {
+        this.categoryList = data.data;
+        this.cat_id=this.cat_id;
+      });
+    } else {
+      this.localStoreUser = false
+      window.location.href = "/dang-nhap";
     }
+  }
   getall() {
     this.sanphamService.GetAll().subscribe((data: any) => {
       this.sanpham = data.data;

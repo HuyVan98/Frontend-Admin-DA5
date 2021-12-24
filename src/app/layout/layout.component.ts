@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponent implements OnInit {
 
   constructor() { }
-
+  localStoreUserLogin=false;
   ngOnInit(): void {
+    var userlogin = localStorage.getItem('user')
+    if (userlogin) {
+      this.localStoreUserLogin=true
+    }
   }
 
 }

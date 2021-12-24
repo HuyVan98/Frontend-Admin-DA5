@@ -14,9 +14,18 @@ export class MainComponent implements OnInit {
   dataStatistical: any;
   danhmuc: any;
   totalLength: any;
+  localStoreUser = true;
   
   ngOnInit(): void {
-    this.statistical();
+    
+    var userlogin = localStorage.getItem('user')
+    if (userlogin) {
+      this.statistical();
+    } else {
+      this.localStoreUser = false
+      window.location.href = "/dang-nhap";
+      
+    }
   }
   statistical() {
     this.mainService.statistical().subscribe((data: any) => {

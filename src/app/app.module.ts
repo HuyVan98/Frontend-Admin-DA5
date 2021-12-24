@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { ConmentComponent } from './conment/conment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -23,7 +24,8 @@ import { OrderComponent } from './order/order.component';
     LayoutComponent,
     UsersComponent,
     ConmentComponent,
-    OrderComponent
+    OrderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -14,14 +14,19 @@ export class CategoryComponent implements OnInit {
   totalLength: any;
   display: any = false;
   tenloai: any;
-
+  localStoreUser = true;
   constructor(
     private readonly danhmucService: DanhMucService,
   ) { }
- 
-
   ngOnInit(): void {
-     this.getall();
+    var userlogin = localStorage.getItem('user')
+    if (userlogin) {
+      this.getall();
+    } else {
+      this.localStoreUser = false
+      window.location.href = "/dang-nhap";
+      
+    }
   }
   getall() {
     this.danhmucService.GetAll().subscribe((data: any) => {
