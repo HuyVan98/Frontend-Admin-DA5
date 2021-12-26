@@ -7,6 +7,8 @@ import { ProductComponent } from './product/product.component';
 import { UsersComponent } from './users/users.component';
 import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
+import { SliderComponent } from './slider/slider.component';
+import { BannerComponent } from './banner/banner.component';
 
 const routes: Routes = [
   { path: "dang-nhap", component: LoginComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: "danh-muc", component: CategoryComponent},
   { path: "quan-ly-binh-luan", component: ConmentComponent},
   { path: "danh-muc/:id", component: CategoryComponent },
+  { path: "slider", component: SliderComponent },
+  { path: "banner", component: BannerComponent },
   
 ];
 

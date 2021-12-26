@@ -80,14 +80,16 @@ export class ProductComponent implements OnInit {
       .getByid(id)
       .subscribe({
         next: (sp) => {
-          this.id = sp.data.id;
-          this.name = sp.data.name;
-          this.price = sp.data.price;
-          this.describer = sp.data.describer;
-          this.info = sp.data.info;
-          this.featured = sp.data.featured;
-          this.image = sp.data.image;
-          this.cat_id = sp.data.cat_id;
+          console.log(sp.data);
+          
+          this.id = sp.data[0].id;
+          this.name = sp.data[0].name;
+          this.price = sp.data[0].price;
+          this.describer = sp.data[0].describer;
+          this.info = sp.data[0].info;
+          this.featured = sp.data[0].featured;
+          this.image = sp.data[0].image;
+          this.cat_id = sp.data[0].cat_id;
         },
 
       });
