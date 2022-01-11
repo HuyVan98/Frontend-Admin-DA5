@@ -40,7 +40,7 @@
                                 <td>{{item.name}}</td>
                                 <td>{{ item.price | currency:" " }} VND</td>
                                 <td style="text-align: center">
-                                    <img width="130" height="180" src="../../assets/img/{{item.image}}" />
+                                    <img width="200" height="180" src="../../assets/img/{{item.image}}" />
                                 </td>
                                 <td><span class="label label-success">Còn hàng</span></td>
                                 <td>{{item.cate}}</td>
@@ -164,8 +164,8 @@
                 </div>
                 <div class=" form-group ">
                     <label class=" ">Ảnh đại diện</label><br>
-                    <img src="../../assets/img/download.jpg " height="250px; " width="200px; ">
-                    <input type="file " (change)="uploadPhoto($event) " class="form-control " />
+                    <img src="../../assets/img/{{image}} " height="250px; " width="200px; ">
+                    <input type="file" (change)="uploadPhoto($event)" class="form-control " />
                 </div>
                 <section class="content ">
                     <label class=" ">Chi tiet</label><br>
